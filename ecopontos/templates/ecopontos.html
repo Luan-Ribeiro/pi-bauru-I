@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <!-- Theme Made By www.w3schools.com -->
+    <title>Bootstrap Theme Company Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="../../static/style.css">
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<div id="header">
+    <div id="Avatar_Container" class="thumb">
+        <img src="{% static 'ecopontos/img/Avatar_Rosto.png' %}" id="Avatar_Rosto">
+    </div>
+
+    <div id="Nome_do_Usuario">
+        <h1 id="ola">Olá, Administrador</h1>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-top" id="conteudo-left">
+    <div class="container" id="conteudo-left">
+        <div class="navbar-header">
+            <img class="navbar-brand" src="{% static 'ecopontos/img/Logo_EcoPonto.JPG' %}" id="Logo_EcoPonto">
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="{% url 'home-ecopontos' %}">ECOPONTOS</a></li>
+                <li><a href="{% url 'home-usuarios' %}">USUARIOS</a></li>
+                <li><a href="{% url 'home-descartadores' %}">DESCARTADORES</a></li>
+                <li><a href="{% url 'home-descartes' %}">DESCARTES</a></li>
+                <li><a href="/inicio">SAIR</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="container1">
+    <div id="conteudo-right">
+        <div class="Container_Ecopontos" style="margin: 20px">
+            <h1>Gestão de Ecopontos</h1>
+            <form action="{% url 'save-ecopontos' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <label for="cep" class="col-2 col-form-label">CEP</label>
+                    <div class="col-10">
+                        <input id="cep" name="cep" placeholder="CEP" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="bairro" class="col-2 col-form-label">Bairro</label>
+                    <div class="col-10">
+                        <input id="bairro" name="bairro" placeholder="Bairro" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="endereco" class="col-2 col-form-label">Endereço</label>
+                    <div class="col-10">
+                        <input id="endereco" name="endereco" placeholder="Endereco" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="situacao" class="col-2 col-form-label">Situação</label>
+                    <div class="col-10">
+                        <select id="situacao" name="situacao" class="custom-select" required="required">
+                            <option value="Ativo">Ativo</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="offset-2 col-10">
+                        <button name="submit" type="submit" class="btn btn-primary">Salvar</button>
+                    </div>
+                </div>
+            </form>
+            <table id="tabela" class="table table-borderless">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>CEP</th>
+                    <th>BAIRRO</th>
+                    <th>ENDERECO</th>
+                    <th>SITUACAO</th>
+                </tr>
+
+                </thead>
+                {% for ecoponto in ecopontos %}
+                    <tbody>
+                    <tr>
+                        <td>{{ ecoponto.id }}</td>
+                        <td> {{ ecoponto.cep }} </td>
+                        <td>{{ ecoponto.bairro }}</td>
+                        <td>{{ ecoponto.endereco }}</td>
+                        <td> {{ ecoponto.situacao }} </td>
+                        <td>
+                            <a href="{% url 'editar-ecopontos' ecoponto.id %}" class="glyphicon glyphicon-edit"></a>
+                        </td>
+                        <td>
+                            <a href="{% url 'delete-ecopontos' ecoponto.id %}"
+                               class="glyphicon glyphicon-trash"></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                {% endfor %}
+            </table>
+            <!--*****Edição Ecopontos************************************************************************************-->
+        </div>
+    </div>
+</div>
+</body>
+</html>

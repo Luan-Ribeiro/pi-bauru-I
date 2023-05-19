@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <!-- Theme Made By www.w3schools.com -->
+    <title>Bootstrap Theme Company Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="../../static/style.css">
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<div id="header">
+    <div id="Avatar_Container" class="thumb">
+        <img src="{% static 'ecopontos/img/Avatar_Rosto.png' %}" id="Avatar_Rosto">
+    </div>
+
+    <div id="Nome_do_Usuario">
+        <h1 id="ola">Olá, Administrador</h1>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-top" id="conteudo-left">
+    <div class="container" id="conteudo-left">
+        <div class="navbar-header">
+            <img class="navbar-brand" src="{% static 'ecopontos/img/Logo_EcoPonto.JPG' %}" id="Logo_EcoPonto">
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="{% url 'home-ecopontos' %}">ECOPONTOS</a></li>
+                <li><a href="{% url 'home-usuarios' %}">USUARIOS</a></li>
+                <li><a href="{% url 'home-descartadores' %}">DESCARTADORES</a></li>
+                <li><a href="{% url 'home-descartes' %}">DESCARTES</a></li>
+                <li><a href="/inicio">SAIR</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="container1">
+    <div id="conteudo-right">
+        <div class="Container_Descartadores" style="margin: 20px">
+            <h1>Gestão de Descartadores</h1>
+            <form action="{% url 'save-descartadores' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <label for="nome" class="col-2 col-form-label">Nome</label>
+                    <div class="col-10">
+                        <input id="nome" name="nome" placeholder="Nome" type="text" required="required"
+                               class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="documento" class="col-2 col-form-label">Documento</label>
+                    <div class="col-10">
+                        <input id="documento" name="documento" placeholder="Documento" type="text"
+                               required="required"
+                               class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="email" class="col-2 col-form-label">Email</label>
+                    <div class="col-10">
+                        <input id="email" name="email" placeholder="Email" type="text" required="required"
+                               class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="endereco" class="col-2 col-form-label">Endereço</label>
+                    <div class="col-10">
+                        <input id="endereco" name="endereco" placeholder="Endereço" type="text" required="required"
+                               class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-2 col-10">
+                        <button name="submit" type="submit" class="btn btn-primary">Salvar</button>
+                    </div>
+                </div>
+            </form>
+            <table id="tabela" class="table table-borderless">
+                <thead>
+                <tr>
+                    <th>NOME</th>
+                    <th>DOCUMENTO</th>
+                    <th>EMAIL</th>
+                    <th>ENDERECO</th>
+                </tr>
+
+                </thead>
+                {% for descartador in descartadores %}
+                    <tbody>
+                    <tr>
+                        <td>{{ descartador.nome }}</td>
+                        <td> {{ descartador.documento }} </td>
+                        <td>{{ descartador.email }}</td>
+                        <td>{{ descartador.endereco }}</td>
+                        <td>
+                            <a href="{% url 'editar-descartadores' descartador.documento %}"
+                               class="glyphicon glyphicon-edit"></a>
+                        </td>
+                        <td>
+                            <a href="{% url 'delete-descartadores' descartador.documento %}"
+                               class="glyphicon glyphicon-trash"></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <!-- Theme Made By www.w3schools.com -->
+    <title>Bootstrap Theme Company Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="../../static/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font: 400 15px Lato, sans-serif;
+            line-height: 1.8;
+            color: #818181;
+        }
+
+        h2 {
+            font-size: 24px;
+            text-transform: uppercase;
+            color: #303030;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        h4 {
+            font-size: 19px;
+            line-height: 1.375em;
+            color: #303030;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        .jumbotron {
+            background-color: #04AA6D;
+            color: #fff;
+            padding: 100px 25px;
+            font-family: Montserrat, sans-serif;
+        }
+
+        .container-fluid {
+            padding: 60px 50px;
+        }
+
+        .bg-grey {
+            background-color: #f6f6f6;
+        }
+
+        .logo-small {
+            color: #04AA6D;
+            font-size: 50px;
+        }
+
+        .logo-small-red {
+            color: #dc0808;
+            font-size: 50px;
+        }
+
+        .logo {
+            color: #04AA6D;
+            font-size: 200px;
+        }
+
+        .thumbnail {
+            padding: 0 0 15px 0;
+            border: none;
+            border-radius: 0;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            margin-bottom: 10px;
+        }
+
+        .carousel-control.right, .carousel-control.left {
+            background-image: none;
+            color: #04AA6D;
+        }
+
+        .carousel-indicators li {
+            border-color: #04AA6D;
+        }
+
+        .carousel-indicators li.active {
+            background-color: #04AA6D;
+        }
+
+        .item h4 {
+            font-size: 19px;
+            line-height: 1.375em;
+            font-weight: 400;
+            font-style: italic;
+            margin: 70px 0;
+        }
+
+        .item span {
+            font-style: normal;
+        }
+
+        .panel {
+            border: 1px solid #04AA6D;
+            border-radius: 0 !important;
+            transition: box-shadow 0.5s;
+        }
+
+        .panel:hover {
+            box-shadow: 5px 0px 40px rgba(0, 0, 0, .2);
+        }
+
+        .panel-footer .btn:hover {
+            border: 1px solid #04AA6D;
+            background-color: #fff !important;
+            color: #04AA6D;
+        }
+
+        .panel-heading {
+            color: #fff !important;
+            background-color: #04AA6D !important;
+            padding: 25px;
+            border-bottom: 1px solid transparent;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+        }
+
+        .panel-footer {
+            background-color: white !important;
+        }
+
+        .panel-footer h3 {
+            font-size: 32px;
+        }
+
+        .panel-footer h4 {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .panel-footer .btn {
+            margin: 15px 0;
+            background-color: #04AA6D;
+            color: #fff;
+        }
+
+        .navbar {
+            margin-bottom: 0;
+            background-color: rgba(255, 255, 255, 0.31);
+            z-index: 9999;
+            border: 0;
+            font-size: 12px !important;
+            line-height: 1.42857143 !important;
+            letter-spacing: 4px;
+            border-radius: 0;
+            font-family: Montserrat, sans-serif;
+        }
+
+        .navbar li a, .navbar .navbar-brand {
+            color: #fff !important;
+        }
+
+        .navbar-nav li a:hover, .navbar-nav li.active a {
+            color: rgba(255, 255, 255, 0.58) !important;
+            background-color: rgba(255, 255, 255, 0.06) !important;
+        }
+
+        footer .glyphicon {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #04AA6D;
+        }
+
+        .slideanim {
+            visibility: hidden;
+        }
+
+        .slide {
+            animation-name: slide;
+            -webkit-animation-name: slide;
+            animation-duration: 1s;
+            -webkit-animation-duration: 1s;
+            visibility: visible;
+        }
+
+        @keyframes slide {
+            0% {
+                opacity: 0;
+                transform: translateY(70%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0%);
+            }
+        }
+
+        @-webkit-keyframes slide {
+            0% {
+                opacity: 0;
+                -webkit-transform: translateY(70%);
+            }
+            100% {
+                opacity: 1;
+                -webkit-transform: translateY(0%);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .col-sm-4 {
+                text-align: center;
+                margin: 25px 0;
+            }
+
+            .btn-lg {
+                width: 100%;
+                margin-bottom: 35px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .logo {
+                font-size: 150px;
+            }
+        }
+
+        #container1 {
+            width: 1100px;
+            align-content: center;
+            margin: 0 auto;
+        }
+
+        #enderecos {
+            width: 800px;
+            align-content: center;
+            margin: 0 auto;
+        }
+
+        #footer {
+            background-color: #04AA6D;
+            width: 1100px;
+            align-content: center;
+            margin: 0 auto;
+            color: #fff !important;
+        }
+
+        #consulta {
+            background-color: #04AA6D;
+            width: 1100px;
+            align-content: center;
+            margin: 0 auto;
+            color: #fff !important;
+        }
+
+        .mapa {
+            width: 800px;
+            align-content: center;
+            margin: 0 auto;
+        }
+
+        #input-documento {
+            width: 500px;
+            align-content: center;
+            margin: 0 auto;
+        }
+
+        .alert {
+            display: none; /* Inicialmente, a mensagem está oculta */
+            padding: 10px;
+            background-color: #dc0808; /* Cor de fundo da mensagem de alerta */
+            color: #000; /* Cor do texto da mensagem de aviso */
+        }
+
+    </style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="conteudo-left">
+    <div class="container" id="conteudo-left">
+        <div class="navbar-header">
+            <img class="navbar-brand" src="{% static 'ecopontos/img/Logo_EcoPonto.JPG' %}" id="Logo_EcoPonto">
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="#sobre">SOBRE</a></li>
+                <li><a href="#consulta">CONSULTA</a></li>
+                <li><a href="#locais">LOCAIS</a></li>
+                <li><a href="#mapa">MAPA</a></li>
+                <li><a href="#horario">HORÁRIO</a></li>
+                <li><a href="/login">ÁREA RESTRITA</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="container1">
+    <div class="jumbotron text-center">
+        <h1>Sistema de Informação e acompanhamento de Descartes nos Ecopontos de Bauru</h1>
+    </div>
+
+    <!-- Container (About Section) -->
+    <div id="sobre" class="container-fluid">
+        <div class="row">
+            <div class="col-sm-8">
+                <h2>O que são Ecopontos?</h2><br>
+                <p>São áreas públicas criadas pela Prefeitura através da Secretaria Municipal do Meio Ambiente para a
+                    captação de pequenas quantidades de entulho (até 1m³) dos PEQUENOS GERADORES. Nesses locais o
+                    entulho deve ser separado pelo gerador sob orientação do funcionário do local.</p>
+            </div>
+            <div class="col-sm-4">
+                <span class="glyphicon glyphicon-refresh logo"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid bg-grey">
+        <div class="row">
+            <div class="col-sm-4">
+                <span class="glyphicon glyphicon-globe logo slideanim"></span>
+            </div>
+            <div class="col-sm-8">
+                <div>
+                    <h2>O que posso descartar?</h2><br>
+                    <span class="glyphicon glyphicon-thumbs-up logo-small"></span>
+                    <h4><strong>Pode descartar</strong> Pequenas quantidades de entulho (até 1m³ a cada 120 dias),
+                        Madeira,
+                        Plástico, Metal, Vidro, Papel e Papelão, Móveis e Eletrodomésticos..</h4><br>
+                </div>
+                <div>
+                    <span class="glyphicon glyphicon-thumbs-down logo-small-red"></span>
+                    <h4><strong>Não pode descartar</strong> Grandes quantidades de entulho de construção (mais de 1m³),
+                        Lixo
+                        doméstico, Lixo hospitalar ou de serviços de saúde (dentistas, clínicas veterinárias, clínicas
+                        estéticas etc.) e Lixo industrial.</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="consulta" class="container-fluid text-center">
+        <h2>CONSULTA</h2>
+        <h4>Consulte se pode fazer descartes nesse mês</h4>
+        <br>
+        <p>Como já foi citado, temos um limite de 1m³ de residuos por pessoa que pode ser descartados todo mês, por isso
+            faça a consulta abaixo e veja se não o ultrapassou.</p>
+        <br>
+        <form>
+            {% csrf_token %}
+            <div id="input-documento" class="input-group">
+                <input type="cpf" class="form-control" size="50" placeholder="CPF" required>
+                <div class="input-group-btn">
+                    <button onclick="exibirMensagemAlerta()" type="button" class="btn btn-primary">Procurar</button>
+                </div>
+            </div>
+        </form>
+        <div id="alerta" class="alert">
+            Limite excedido, tente novamente no próximo mês!
+        </div>
+    </div>
+
+    <!-- Container (Services Section) -->
+    <div id="locais" class="container-fluid text-center">
+        <h2>LOCAIS</h2>
+        <h4>Endereços dos Ecopontos</h4>
+        <br>
+        <div class="row slideanim">
+            <div id="enderecos">
+                <li>Ecoponto Antonio Eufrasio de Toledo - Rua Sorocabana, quadra 2</li>
+                <li>Ecoponto Mary Dota - Rua Americo Finazzi, quadra 4</li>
+                <li>Ecoponto Jardim Redentor/Geisel - Rua Noé Onofre Teixeira, quadra 3</li>
+                <li>Ecoponto Pousada I - Rua 41, quadra 1 (Entre as Ruas Joaquim Gonçalves Soriano, quadra 5 e Maurício
+                    Pereira de Lima)
+                </li>
+                <li>Ecoponto Edson Francisco da Silva - Rua Dulce Duarte Carrijo, quadra 4</li>
+                <li>Ecoponto Parque Viaduto, Rua Bernardino de Campos, quadra 28</li>
+                <li>Ecoponto Engenheiro Octávio Rasi - Rua Manoel Lopes Neves, quadra 1</li>
+                <li>Ecoponto Santa Edwirges - Rua Francisco do Rêgo Carranca, quadra 1</li>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container (Portfolio Section) -->
+    <div id="mapa" class="container-fluid text-center bg-grey">
+        <h2>Mapa dos Ecopontos</h2><br>
+        <div class="row text-center">
+            <div class="mapa">
+                <iframe width="600" height="450"
+                        src="https://maps.google.com.br/maps/ms?msa=0&amp;msid=213452230549172689477.0004c7619e0e874227f19&amp;ie=UTF8&amp;t=m&amp;source=embed&amp;ll=-22.303431,-49.075652&amp;spn=0.066822,0.091027&amp;output=embed"></iframe>
+                <br/>
+                <small>Para visualizar em um mapa maior <b><a
+                        href="https://maps.google.com.br/maps/ms?msid=213452230549172689477.0004c7619e0e874227f19&msa=0&ll=-22.311649,-49.072838&spn=0.110214,0.181789"
+                        class="external-link">Ecopontos - Bauru/SP</a></b></small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container (Contact Section) -->
+    <div id="horario" class="container-fluid bg-grey">
+        <h2 class="text-center">HORÁRIOS</h2>
+        <div class="row">
+            <div class="col-sm-8">
+                <h4>Horário de atendimento</h4>
+                <p>Segunda a Sábado, das 7 às 19h e aos Domingos e feriados, das 8 às 16h.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image of location/map -->
+    <div id="footer">
+        <footer class="container-fluid text-center">
+            <p>Página criada pela equipe BAURU-PJI110.</p>
+            <p>Usado como referencia o site da Prefeitura Municipal de Bauru : <a href="https://www2.bauru.sp.gov.br/semma/ecoponto.aspx"
+                                                             title="Ecoponto">Ecoponto Bauru</a>
+            </p>
+        </footer>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        // Add smooth scrolling to all links in navbar + footer link
+        $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
+            // Make sure this.hash has a value before overriding default behavior
+            if (this.hash !== "") {
+                // Prevent default anchor click behavior
+                event.preventDefault();
+
+                // Store hash
+                var hash = this.hash;
+
+                // Using jQuery's animate() method to add smooth page scroll
+                // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 900, function () {
+
+                    // Add hash (#) to URL when done scrolling (default click behavior)
+                    window.location.hash = hash;
+                });
+            } // End if
+        });
+
+        $(window).scroll(function () {
+            $(".slideanim").each(function () {
+                var pos = $(this).offset().top;
+
+                var winTop = $(window).scrollTop();
+                if (pos < winTop + 600) {
+                    $(this).addClass("slide");
+                }
+            });
+        });
+    })
+
+    function exibirMensagemAlerta() {
+        var alerta = document.getElementById("alerta");
+        alerta.style.display = "block"; // Exibe a mensagem de aviso
+    }
+</script>
+
+</body>
+</html>
