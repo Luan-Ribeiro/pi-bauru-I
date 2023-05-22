@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'core'
 ]
 
+LOGIN_REDIRECT_URL = 'home-ecopontos'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

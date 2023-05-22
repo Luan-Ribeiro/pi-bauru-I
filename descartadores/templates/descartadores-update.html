@@ -19,7 +19,7 @@
     </div>
 
     <div id="Nome_do_Usuario">
-        <h1 id="ola">Olá, Administrador</h1>
+        <h1 id="ola">Olá, {{ username }}</h1>
     </div>
 </div>
 
@@ -44,7 +44,7 @@
     <div id="conteudo-right">
         <div class="Container_Descartadores" style="margin: 20px">
             <h1>Edição Descartador</h1>
-            <form action="{% url 'update-descartadores' descartadores.id %}" method="POST">
+            <form action="{% url 'update-descartadores' descartadores.documento %}" method="POST">
                 {% csrf_token %}
                 <div class="form-group row">
                     <label for="nome" class="col-2 col-form-label">Nome</label>

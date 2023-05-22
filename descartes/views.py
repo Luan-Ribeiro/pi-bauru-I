@@ -5,8 +5,9 @@ from .models import Descartes
 
 
 def home(request):
+    user = request.user.username
     vdescartes = Descartes.objects.all()
-    return render(request, "descartes.html", {"descartes": vdescartes})
+    return render(request, "descartes.html", {"descartes": vdescartes, "username": user})
 
 
 def save(request):
@@ -18,8 +19,9 @@ def save(request):
 
 
 def editar(request, id):
+    user = request.user.username
     vdescartes = Descartes.objects.get(id=id)
-    return render(request, "descartes-update.html", {"descartes": vdescartes})
+    return render(request, "descartes-update.html", {"descartes": vdescartes, "username": user})
 
 
 def update(request, id):

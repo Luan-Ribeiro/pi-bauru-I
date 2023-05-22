@@ -5,8 +5,9 @@ from .models import Usuarios
 
 
 def home(request):
+    user = request.user.username
     vusuarios = Usuarios.objects.all()
-    return render(request, "usuarios.html", {"usuarios": vusuarios})
+    return render(request, "usuarios.html", {"usuarios": vusuarios, "username": user})
 
 
 def save(request):
@@ -22,9 +23,9 @@ def save(request):
 
 
 def editar(request, id):
+    user = request.user.username
     vusuarios = Usuarios.objects.get(id=id)
-    return render(request, "usuarios-update.html", {"usuarios": vusuarios})
-
+    return render(request, "usuarios-update.html", {"usuarios": vusuarios, "username": user})
 
 def update(request, id):
     if request.method == 'POST':

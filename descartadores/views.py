@@ -5,8 +5,9 @@ from .models import Descartadores
 
 
 def home(request):
+    user = request.user.username
     vdescartadores = Descartadores.objects.all()
-    return render(request, "descartadores.html", {"descartadores": vdescartadores})
+    return render(request, "descartadores.html", {"descartadores": vdescartadores, "username": user})
 
 
 def buscar(request, documento):
@@ -27,8 +28,9 @@ def save(request):
 
 
 def editar(request, documento):
+    user = request.user.username
     vdescartador = Descartadores.objects.get(documento=documento)
-    return render(request, "descartadores-update.html", {"descartadores": vdescartador})
+    return render(request, "descartadores-update.html", {"descartadores": vdescartador, "username": user})
 
 
 def update(request, documento):

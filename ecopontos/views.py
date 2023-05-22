@@ -1,12 +1,15 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from .forms import EcopontosForm
 from .models import Ecopontos
 
 
+@login_required
 def home(request):
+    user = request.user.username
     vecopontos = Ecopontos.objects.all()
-    return render(request, "ecopontos.html", {"ecopontos": vecopontos})
+    return render(request, "ecopontos.html", {"ecopontos": vecopontos, "username": user})
 
 
 def save(request):
@@ -22,8 +25,9 @@ def save(request):
 
 
 def editar(request, id):
+    user = request.user.username
     vecopontos = Ecopontos.objects.get(id=id)
-    return render(request, "ecopontos-update.html", {"ecopontos": vecopontos})
+    return render(request, "ecopontos-update.html", {"ecopontos": vecopontos, "username": user})
 
 
 def update(request, id):
