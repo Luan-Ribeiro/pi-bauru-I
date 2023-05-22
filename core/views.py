@@ -25,7 +25,6 @@ def user_login(request):
         return render(request, 'login.html')
 
 
-
 def user_register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
@@ -39,3 +38,8 @@ def user_register(request):
 
 def page_register(request):
     return render(request, "signup.html")
+
+
+def logout_view(request):
+    logout(request)
+    return redirect(home)
