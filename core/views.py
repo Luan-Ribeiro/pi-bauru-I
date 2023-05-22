@@ -1,8 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django.contrib import messages
-
-from .forms import CustomUserCreationForm
 
 
 def home(request):
@@ -27,12 +26,12 @@ def user_login(request):
 
 def user_register(request):
     if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect(user_login)
     else:
-        form = CustomUserCreationForm()
+        form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
 
 
