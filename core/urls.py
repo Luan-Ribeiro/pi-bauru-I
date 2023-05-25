@@ -8,7 +8,7 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='user_login'),
     path('login/verify', user_login, name="user_login"),
     path('logout/', logout_view, name='logout'),
-    path('inicio/', home),
+    path('', home),
     path('registro/', page_register, name="page_register"),
     path('registro/save', user_register, name="user_register"),
     path('ecopontos/', include('ecopontos.urls')),
