@@ -32,7 +32,7 @@ def user_register(request):
             return redirect(user_login)
     else:
         form = UserCreationForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'login.html')
 
 
 def page_register(request):
