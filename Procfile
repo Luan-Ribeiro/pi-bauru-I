@@ -1,1 +1,1 @@
-web: gunicorn ecoponto-pi.wsgi
+web: gunicorn core.wsgi
